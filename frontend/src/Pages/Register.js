@@ -14,9 +14,20 @@ const RegistrationForm = () => {
     setFormData({ ...formData, [name]: value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('Form Data:', formData);
+    console.log(formData);
+    const response =  await fetch("http://localhost:8000/auth/registration",
+      {
+      method:"POST",
+      headers:
+      {
+        "Content-Type":"application/json",
+      },
+      body:JSON.stringify(formData)
+      }
+    )
+   
   };
 
   const cardStyle = {
